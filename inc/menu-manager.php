@@ -1,15 +1,16 @@
 <?php
-//khai bao menu
+//khai bao vùng menu
 add_action('init', 'dttl_theme_menu');
 function dttl_theme_menu(){
     register_nav_menus(
         array(
-            '1st-top-menu' => __('1st top menu','taife'),
+            'main_menu' => __('main menu','Nutrition'),
         )
     );
 }
 
-// filter menu
+// filter menu dùng để thêm các icon tùy biến cho các phần tử trong menu
+/*
 add_filter('walker_nav_menu_start_el', 'dttl_filter_menu',10,4);// 10 là độ ưu tiên của filter hook, 4 là số tham số truyền vào hàm DDN_filter_menu
 function dttl_filter_menu($item_output, $item, $depth, $args){
     // $item là thông tin của từng phần tử menu như các class của menu, vv
@@ -48,5 +49,6 @@ function dttl_filter_menu($item_output, $item, $depth, $args){
     return $item_output;
 
 }
+*/
 
 

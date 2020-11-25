@@ -1,7 +1,3 @@
-<footer id="footer">
-                    <p class="copyright">&copy; Untitled. All rights reserved. Demo Images: </p>
-                </footer>
-
             </div>
         </div>
 

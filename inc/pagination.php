@@ -3,11 +3,13 @@
     $big = 99999999;
     $pagenum_link = str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) );
     // $pagenum_link = str_replace('&','#038;', $pagenum_link);
+    echo get_query_var('page');
     $args = array(
         'base' => add_query_arg('page','%#%'),
-        'format' => '?paged=%#%',
+        // 'base' => '%#%',
+        'format' => '?page=%#%',
         'current' => max( 1, get_query_var('page') ),// đoạn code này có ý nghĩa nếu tham số sau lớn hơn tham số trước thì lấy tham số sau làm giá trị
-        'total' => $Query->max_num_pages,
+        'total' => $wp_query->max_num_pages,
         'show_all' => false,
         'end_size' => 1,
         'mid_size' => 2,

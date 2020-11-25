@@ -1,10 +1,9 @@
 <?php
 // tao hằng số lưu đường dẫn
-define('prefix', 'NUTRITION_THEME_')
 define('NUTRITION_THEME_DIR', get_template_directory());// đường dẫn tới thư mục theme dẫn tới các khu vực chứa file
 define('NUTRITION_THEME_URL', get_template_directory_uri());//
 define('NUTRITION_THEME_INC_DIR', NUTRITION_THEME_DIR . '/inc');
-define('NUTRITION_THEME_DEST_DIR', NUTRITION_THEME_DIR . '/dest');
+define('NUTRITION_THEME_ASSETS_DIR', NUTRITION_THEME_DIR . '/assets');
 define('NUTRITION_THEME_CUSTOMIZER_DIR', NUTRITION_THEME_INC_DIR . '/customizer');
 define('NUTRITION_THEME_URL_IMG', get_template_directory_uri() . '/img');
 
@@ -22,8 +21,8 @@ require_once NUTRITION_THEME_INC_DIR . '/support-functions.php';
 // 6. quản lý customizer
 // ----------------------------
 require_once NUTRITION_THEME_INC_DIR . '/customizer-manager.php';
-global $taifeCustomize;// khai báo biến $DDNCustomize để có thể sử dụng ở mọi nơi trong website
-$taifeCustomize = new NUTRITION_THEME_Customizer_Manager();
+global $CustomizeVal;// khai báo biến $DDNCustomize để có thể sử dụng ở mọi nơi trong website
+$CustomizeVal = new dttl_Theme_Customizer_Manager();
 
 
 // ----------------------------
@@ -53,11 +52,11 @@ function NUTRITION_THEME_post_format(){
 // ----------------------------
 // 2. nap tep tin js
 // ----------------------------
-require_once NUTRITION_THEME_DEST_DIR . '/js-manager.php';
+require_once NUTRITION_THEME_ASSETS_DIR . '/js/js-manager.php';
 // ----------------------------
 // 1. nap tep tin css
 // ----------------------------
-require_once NUTRITION_THEME_DEST_DIR . '/css-manager.php';
+require_once NUTRITION_THEME_ASSETS_DIR . '/css/css-manager.php';
 // ----------------------------
 // 0. đổi giao diện edit về giao diện cũ
 // ----------------------------

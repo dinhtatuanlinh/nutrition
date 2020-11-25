@@ -1,3 +1,9 @@
+<?php 
+    // lấy dữ liệu từ customize footer info
+    global $CustomizeVal;// gọi biến $DDNCustomize để có thể dùng ở đây
+    $aboutData = $CustomizeVal->about_section_data(); // tham số desktop truyền vào để xác định các dữ liệu nằm trên giao diện desktop
+    // print_r($webElements);
+?>
  <!-- Sidebar -->
  <div id="sidebar">
             <div class="inner">
@@ -14,20 +20,47 @@
                     <header class="major">
                         <h2>Menu</h2>
                     </header>
-                    <ul>
-                        <li><a href="index.html">Homepage</a></li>
-                        <li><a href="detail.html">Detail</a></li>
-                        <li><a href="elements.html">Elements</a></li>
-                        <li>
-                            <span class="opener">Submenu</span>
-                            <ul>
-                                <li><a href="#">Lorem Dolor</a></li>
-                                <li><a href="#">Ipsum Adipiscing</a></li>
-                                <li><a href="#">Tempus Magna</a></li>
-                                <li><a href="#">Feugiat Veroeros</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                    <?php
+                        if(has_nav_menu('main_menu')){
+                            $args = array(
+                                'menu'                 => '',
+                                'container'            => 'div',
+                                'container_class'      => '',
+                                'container_id'         => '',
+                                'container_aria_label' => '',
+                                'menu_class'           => '',
+                                'menu_id'              => '',
+                                'echo'                 => true,
+                                'fallback_cb'          => 'wp_page_menu',
+                                'before'               => '',
+                                'after'                => '',
+                                'link_before'          => '',
+                                'link_after'           => '',
+                                'items_wrap'           => '<ul>%3$s</ul>',//%3$s tương ứng với giá trị trong cặp thẻ li đưa vào
+                                'item_spacing'         => 'preserve',
+                                'depth'                => 2,// cho phép menu hiện 2 cấp nếu bằng 0 thì hiện tất cả các cấp bằng 1 thì chỉ hiện menu cha
+                                'walker'               => '',
+                                'theme_location'       => 'main_menu',
+                            );
+                            wp_nav_menu( $args );
+                        }
+                    ?>
+                    <!-- <div>
+                        <ul>
+                            <li><a href="index.html">Homepage</a></li>
+                            <li><a href="detail.html">Detail</a></li>
+                            <li><a href="elements.html">Elements</a></li>
+                            <li>
+                                <span class="opener">Submenu</span>
+                                <ul>
+                                    <li><a href="#">Lorem Dolor</a></li>
+                                    <li><a href="#">Ipsum Adipiscing</a></li>
+                                    <li><a href="#">Tempus Magna</a></li>
+                                    <li><a href="#">Feugiat Veroeros</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div> -->
                 </nav>
 
                 <!-- Section left sidebar -->
@@ -57,13 +90,17 @@
 
                 <section>
                     <header class="major">
-                        <h2>Thông tin Liên hệ</h2>
+                        <h2>Thông tin liên hệ</h2>
                     </header>
-                    <p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                    <p class="description-web"><?php echo $aboutData['description-web']; ?></p>
                     <ul class="contact">
-                        <li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
-                        <li class="icon solid fa-phone">(000) 000-0000</li>
-                        <li class="icon solid fa-home">1234 Somewhere Road #8254<br /> Nashville, TN 00000-0000</li>
+                        <li class="icon solid fa-envelope dttlEmail"><?php echo $aboutData['email']; ?></li>
+                        <li class="icon solid fa-phone dttlHotline"><a href="tel:<?php echo $aboutData['hotline']; ?>"><?php echo $aboutData['hotline']; ?></a></li>
+                        <li class="icon solid fa-home dttlAddress"><?php echo $aboutData['address']; ?></li>
                     </ul>
                 </section>
                 <!-- Section left sidebar -->
+                <!-- Footer -->
+                <footer id="footer">
+                    <p class="dttlCopyright">&copy; <?php echo $aboutData['copyright']; ?></p>
+                </footer>
