@@ -4,8 +4,8 @@
     $aboutData = $CustomizeVal->social_links_data(); // tham số desktop truyền vào để xác định các dữ liệu nằm trên giao diện desktop
     // print_r($webElements);
 ?>
-<header id="header">
-                    <a href="index.html" ><img class="dttllogo" src="<?php echo $aboutData['logo']; ?>" alt=""> </a><h1>Dinh Dưỡng</h1>
+<header id="header" style="background-image: url(''); background-repeat: no-repeat; background-size: cover;">
+                    <a href="<?php echo home_url(); ?>" ><img class="dttllogo" src="<?php echo $aboutData['logo']; ?>" alt=""></a>
                     <ul class="icons">
                         <li><a href="<?php echo $aboutData['youtube']; ?>" class="icon brands fa-youtube dttlyoutube"><span class="label">youtube</span></a></li>
                         <li><a href="<?php echo $aboutData['facebook']; ?>" class="icon brands fa-facebook-f dttlfacebook"><span class="label">Facebook</span></a></li>
