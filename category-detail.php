@@ -1,20 +1,23 @@
 <section>
+    <?php
+    $default_posts_per_page = get_option( 'posts_per_page' );   
+    $args = array_merge($args, array(
+        'post_type' => 'post',
+        'posts_per_page' => $default_posts_per_page, 
+        'post_status' => 'publish',
+        'ignore_sticky_posts' => false,
+        'orderby' => 'date',
+        'order' => 'DESC'
+    ));
+    $wp_query = new WP_Query( $args );
+    if ( have_posts() ) :
+    ?>
     <header class="major">
-        <h2>Bài viết mới nhất</h2>
+        <h1><?php echo get_cat_name( $args['cat'] ); ?></h1>
     </header>
     <div class="posts">
         <?php
-            $default_posts_per_page = get_option( 'posts_per_page' );   
-            $args = array_merge($args, array(
-                'post_type' => 'post',
-                'posts_per_page' => $default_posts_per_page, 
-                'post_status' => 'publish',
-                'ignore_sticky_posts' => false,
-                'orderby' => 'date',
-                'order' => 'DESC'
-            ));
-            $wp_query = new WP_Query( $args );
-            if ( have_posts() ) :
+            
                 while (have_posts()) : the_post();
         ?>
         <article>

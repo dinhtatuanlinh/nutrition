@@ -4,8 +4,7 @@
     // $pagenum_link = str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) );
     // $pagenum_link = str_replace('&','#038;', $pagenum_link);
     // echo get_query_var('page');
-    echo $paged;
-    $args = array(
+    $pagiArgs = array(
         'base' => add_query_arg('page','%#%'),
         // 'base' => '%#%',
         'format' => '?page=%#%',
@@ -23,7 +22,7 @@
         // 'before_page_number' => '[',
         // 'after_page_number' => ']'
     );
-    $pagiArray = paginate_links($args);
+    $pagiArray = paginate_links($pagiArgs);
     
 ?>
 <div class="pagination">

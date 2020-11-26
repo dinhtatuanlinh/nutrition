@@ -17,7 +17,8 @@
             // Banner
             get_header("breakingnews");
             // Section
-            get_template_part( 'home', 'main', array('paged' => $paged ) );//để có thể lấy biến bên trong template part phải truyền thông qua mảng
+            get_template_part( 'home', 'main', array(
+                'paged' => $paged ) );//để có thể lấy biến bên trong template part phải truyền thông qua mảng
             ?>
 
 

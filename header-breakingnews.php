@@ -2,18 +2,20 @@
     <?php
         $tag_slug = "noi-bat";
         $args = array(
+            'post_type' => 'post',
             'posts_per_page' => 1, 
             'post_status' => 'publish',
             'ignore_sticky_posts' => false,
+            'tag' => $tag_slug,
             'orderby' => 'date',
-            'order' => 'DESC',
-            'tag' => $tag_slug
+            'order' => 'DESC'
         );
         $wp_query = new WP_Query( $args );
         // echo '<pre>';
         // print_r($wp_query);
         // echo '<pre>';
         if ( have_posts() ) :
+            while (have_posts()) : the_post();
     ?>
     <div class="content">
         <header>
@@ -35,7 +37,7 @@
     ?>
     " alt="<?php the_title(); ?>" /></a></span>
     <?php
-
+        endwhile;
     endif;
     wp_reset_postdata();// reset lại đối tương wp_query
     ?>
@@ -44,12 +46,15 @@
     <?php
         $tag_slug = "dac-trung";
         $args = array(
+            'post_type' => 'post',
             'posts_per_page' => 3, 
             'post_status' => 'publish',
             'ignore_sticky_posts' => false,
             'orderby' => 'date',
             'order' => 'DESC',
-            'tag' => $tag_slug
+            'tag' => $tag_slug,
+            'orderby' => 'date',
+            'order' => 'DESC'
         );
         $wp_query = new WP_Query( $args );
         // echo '<pre>';
