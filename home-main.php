@@ -4,10 +4,8 @@
     </header>
     <div class="posts">
         <?php
-            // if ( get_query_var( 'paged' ) ) { $paged = get_query_var( 'paged' ); }
-            // elseif ( get_query_var( 'page' ) ) { $paged = get_query_var( 'page' ); }
-            // else { $paged = 1; } 
-            print_r(get_query_var( 'page' )) ;
+            $paged = $args['paged'];
+            $args = array();
             $default_posts_per_page = get_option( 'posts_per_page' );   
             $args = array(
                 'post_type' => 'post',
@@ -16,8 +14,7 @@
                 'ignore_sticky_posts' => false,
                 'orderby' => 'date',
                 'order' => 'DESC',
-                'paged' => $paged,
-                'page' => $paged
+                'paged' => $paged
             );
             $wp_query = new WP_Query( $args );
             if ( have_posts() ) :

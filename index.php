@@ -9,13 +9,17 @@
             <!-- Header -->
             <?php get_header("top"); ?>
 
+            <?php
+            global $paged;
+            if ( get_query_var( 'paged' ) ) { $paged = get_query_var( 'paged' ); }
+            elseif ( get_query_var( 'page' ) ) { $paged = get_query_var( 'page' ); }
+            else { $paged = 1; } 
+            echo $paged;
             
-            <?php if(is_home()){
-                // Banner
-                get_header("breakingnews");
-                // Section
-                get_template_part( 'home', 'main' );
-            }
+            // Banner
+            get_header("breakingnews");
+            // Section
+            get_template_part( 'home', 'main', array('paged' => $paged ) );
             ?>
 
 
