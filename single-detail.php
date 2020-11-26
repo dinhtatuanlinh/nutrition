@@ -20,7 +20,7 @@
 
         }
     ?>" alt="<?php the_title(); ?>" /></span>
-
+    <span class="luot-xem"><?php echo getPostViews(get_the_ID());//hiển thị số lượt xem bài viết ?></span>
     <p><?php echo $wp_query->post->post_content; ?></p>
         <?php
 

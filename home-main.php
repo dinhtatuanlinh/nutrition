@@ -36,10 +36,10 @@
             </ul>
         </article>
         <?php
-                            endwhile;
-                        endif;
-                        wp_reset_postdata();// reset lại đối tương wp_query
-                    ?>
+                endwhile;
+            endif;
+            wp_reset_postdata();// reset lại đối tương wp_query
+        ?>
     </div>
     <?php require NUTRITION_THEME_INC_DIR . '/pagination.php'; ?>
     <!-- <div class="pagination">

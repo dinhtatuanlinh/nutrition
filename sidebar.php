@@ -68,23 +68,44 @@
                     <header class="major">
                         <h2>Bài viết được xem nhiều nhất</h2>
                     </header>
+                    <?php
+                        $default_posts_per_page = get_option( 'posts_per_page' );   
+                        $args = array_merge($args, array(
+                            'post_type' => 'post',
+                            'posts_per_page' => 3, 
+                            'post_status' => 'publish',
+                            'ignore_sticky_posts' => false,
+                            'meta_key' => 'post_views_count', 
+                            'orderby' => 'meta_value',
+                            'order' => 'DESC'
+                        ));
+                        $wp_query = new WP_Query( $args );
+                        if ( have_posts() ) :
+                            
+                    ?>
                     <div class="mini-posts">
+                        <?php while (have_posts()) : the_post(); ?>
                         <article>
-                            <a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
-                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+                            <a href="<?php the_permalink(); ?>" class="image"><img src="
+                            <?php 
+                            if(has_post_thumbnail()){
+                                echo get_the_post_thumbnail_url();// $wpquery->post->post_content lấy nội dung bài viết 
+                            }else{
+                                echo get_img_url($wp_query->post->post_content);
+
+                            }
+                            ?>
+                            " alt="<?php the_title(); ?>" /></a>
+                            <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+                            <p><?php echo mb_substr(strip_tags($wp_query->post->post_content), 0, 90) . '...' ;// lấy đoạn tóm tắt từ vị trí 0 và lấy 90?></p>
                         </article>
-                        <article>
-                            <a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
-                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-                        </article>
-                        <article>
-                            <a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
-                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-                        </article>
+                        
+                        <?php endwhile; ?>
                     </div>
-                    <ul class="actions">
-                        <li><a href="#" class="button">More</a></li>
-                    </ul>
+                    <?php
+                        endif;
+                        wp_reset_postdata();// reset lại đối tương wp_query
+                    ?>
                 </section>
 
 

@@ -3423,3 +3423,13 @@ button:disabled,
 .dttl-featured img {
     height: 218px !important;
 }
+
+.luot-xem:before {
+    /* content: '\f403'; */
+    margin-right: 3px;
+}
+
+span.luot-xem {
+    color: #F56A6A;
+    font-weight: 700;
+}

@@ -12,7 +12,7 @@
             <?php
                 get_template_part('single', 'detail', array('p' => get_the_ID()));// truyền id của post thông qua mảng bằng hàm get_the_ID()
             ?>
-
+            <?php setPostViews(get_the_ID());//đếm số lượt xem bài post ?>
 
         </div>
     </div>

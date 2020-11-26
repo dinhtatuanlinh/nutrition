@@ -15,7 +15,7 @@
         // print_r($wp_query);
         // echo '<pre>';
         if ( have_posts() ) :
-            while (have_posts()) : the_post();
+            while (have_posts()) : the_post();//phải dùng vòng lặp while để lấy ra đúng bài được chọn
     ?>
     <div class="content">
         <header>
