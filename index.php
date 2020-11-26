@@ -10,16 +10,14 @@
             <?php get_header("top"); ?>
 
             <?php
-            global $paged;
             if ( get_query_var( 'paged' ) ) { $paged = get_query_var( 'paged' ); }
             elseif ( get_query_var( 'page' ) ) { $paged = get_query_var( 'page' ); }
             else { $paged = 1; } 
-            echo $paged;
-            
+            // hàm get_query_var() phải lấy ở ngoài file index ko thể lấy bên trong template part
             // Banner
             get_header("breakingnews");
             // Section
-            get_template_part( 'home', 'main', array('paged' => $paged ) );
+            get_template_part( 'home', 'main', array('paged' => $paged ) );//để có thể lấy biến bên trong template part phải truyền thông qua mảng
             ?>
 
 
